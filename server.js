@@ -10,16 +10,38 @@ const API_KEY = process.env.API_KEY; // insert api key in to .env file. Its assi
 const weatherStationsURL =
   "https://data.gov.lv/dati/lv/api/3/action/datastore_search?resource_id=c32c7afd-0d05-44fd-8b24-1de85b4bf11d";
 
-//List of all stations with two properties: STATION_ID and NAME
+app.use(express.json());
+// Middleware for authentication
+
+// Get all stations by STATION_ID and NAME
 app.get("/stations", async (req, res) => {
   try {
-  } catch (error) {}
+    const response = await axios.get(weatherStationsURL);
+    const stations = response.data.result.records.map((station) => ({
+      Station_id: station.STATION_ID,
+      Name: station.NAME,
+    }));
+    res.json(stations);
+  } catch (error) {
+    res.status(500).send("Error fetching data");
+  }
 });
 
-//Get station details by STATION_ID (with all data fields)
+// Get station details by STATION_ID (with all data fields)
 app.get("/stations/:id", async (req, res) => {
   try {
-  } catch (error) {}
+    const response = await axios.get(weatherStationsURL);
+    const station = response.data.result.records.find(
+      (station) => station.STATION_ID === req.params.id
+    );
+    if (station) {
+      res.json(station);
+    } else {
+      res.status(404).send("Station not found");
+    }
+  } catch (error) {
+    res.status(500).send("Error fetching data");
+  }
 });
 
 app.listen(PORT, () => {
