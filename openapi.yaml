@@ -1,0 +1,83 @@
+openapi: 3.0.1
+info:
+  title: Weather Stations API
+  description: An API to fetch weather station data.
+  version: 1.0.0
+servers:
+  - url: http://localhost:{port}
+    description: Local server
+    variables:
+      port:
+        default: "3000"
+        description: The port number the API is running on.
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >
+        Enter your API key as: `Bearer <API_KEY>`
+
+  schemas:
+    Station:
+      type: object
+      properties:
+        STATION_ID:
+          type: string
+          description: The ID of the station.
+        NAME:
+          type: string
+          description: The name of the station.
+
+security:
+  - ApiKeyAuth: []
+
+paths:
+  /stations:
+    get:
+      summary: Get all stations
+      description: Retrieve a list of all weather stations by STATION_ID and NAME.
+      tags:
+        - Stations
+      responses:
+        "200":
+          description: A list of weather stations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Station"
+        "403":
+          description: Forbidden - Invalid API key.
+        "500":
+          description: Internal server error.
+
+  /stations/{id}:
+    get:
+      summary: Get station details
+      description: Retrieve detailed information of a weather station by its STATION_ID.
+      tags:
+        - Stations
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: The ID of the station to retrieve.
+      responses:
+        "200":
+          description: Detailed information of the weather station.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Station"
+        "403":
+          description: Forbidden - Invalid API key.
+        "404":
+          description: Station not found.
+        "500":
+          description: Internal server error.
