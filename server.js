@@ -12,6 +12,20 @@ const weatherStationsURL =
 
 app.use(express.json());
 // Middleware for authentication
+app.use((req, res, next) => {
+  const bearerHeader = req.headers["authorization"];
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ");
+    const bearerToken = bearer[1];
+    if (bearerToken === API_KEY) {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } else {
+    res.sendStatus(403);
+  }
+});
 
 // Get all stations by STATION_ID and NAME
 app.get("/stations", async (req, res) => {
