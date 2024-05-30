@@ -1,3 +1,27 @@
+# Komentārs:
+Atbilstoši uzdevuma nostādnei tika izveidots kods web servisam izmantojot Express.js, lai tas iegūtu datus  no norādītā datu avota.<br />
+Neliels koda darbības pārskats:<br />
+
+> Vides mainīgie(envionment variables) - Serviss paredz API atslēgas un porta nummura norādīšanu .env failā. Tie vēlāk tiek iegūti izmantojot 'dotenv' moduli.<br />
+> Autentifikācija - Lai ierobežotu piekļuvi API tika izveidota HTTP uzrādītāja(bearer) atslēgas autentifikācija, kas tika izveidota izmantojot starpprogrammatūru(middleware). Autentifikācija notiek izmantojot uzrādītāja tokenu. Lai autentificētu pieprasījumu ir jāiekļauj derīga API atslēga, kas attiecīgi ļauj piekļūt endpointiem.<br />
+> REST API endpointi - Endponti atgriež uzdevuma nostādnē norādīto informāciju:<br />
+  "/stations" - atgriež visu staciju ID un nosaukumus JSON formātā.<br />
+  "/stations/:id" - atgriež datus, par staciju ar konkrēto ID JSON formātā.<br />
+> Kļūdu apstrāde - Pakalpojums apstrādā kļūdas un ,kļūdas gadījumā, atgriež atbilstošo errora kodu.<br />
+> Testi - Lai nodrošinātu pienācīgu darbību, izmantojot Jest un Supertest, tika izveidoti testi kas:<br />
+-Imitē API atbildes.<br />
+-Pārbauda autentifikācijas darbību.<br />
+-Pārbauda vai abi endpointi atgriež vajadzīgo informāciju.<br />
+-Pārbauda gadijumu, ja stacija netiek atrasta.<br />
+-Apstrādā autorizājas kļūdas.<br />
+
+>Testēšanai tika izmantots Postman un https://editor.swagger.io/ priekš OpenAPI specificācijas<br />
+
+P.s. Ļoti atvainojos, par neveiksmīgo terminoloģijas tulkojumu uz latviešu valodu.<br />
+========================================================
+
+
+
 # weather-stations
 https://github.com/saleniex/homework3?tab=readme-ov-file
 
