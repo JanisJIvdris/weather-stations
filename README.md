@@ -6,22 +6,22 @@ Create web service with REST API which provide info about wether stations in Lat
 
 Requirements:
 
-API should expose two endpoints:
+1.API should expose two endpoints:
 
-List of all stations with two properties: Station_id and Name,
-Station details by Station_id with all data fields found in data source;
-In order to limit access to API implement simple HTTP bearer preshared key authentication;
+2.List of all stations with two properties: Station_id and Name,<br />
+Station details by Station_id with all data fields found in data source;<br />
+In order to limit access to API implement simple HTTP bearer preshared key authentication;<br />
 
-Write Unittests if neecessary;
+3.Write Unittests if neecessary;<br />
 
-Write OpenAPI specification for service;
+4.Write OpenAPI specification for service;<br />
 
-Create Dockerfile so webservice can be used by runing docker run;
+5.Create Dockerfile so webservice can be used by runing docker run;<br />
 
-Assume data in data source is subject of change;
+6.Assume data in data source is subject of change;
 
-Use data from open data source: https://data.gov.lv/dati/lv/dataset/hidrometeorologiskie-noverojumi/resource/c32c7afd-0d05-44fd-8b24-1de85b4bf11d;
+7.Use data from open data source: https://data.gov.lv/dati/lv/dataset/hidrometeorologiskie-noverojumi/resource/c32c7afd-0d05-44fd-8b24-1de85b4bf11d;<br />
 
-Commit each step;
+8.Commit each step;<br />
 
-Provide result as GitHub repository.
+9.Provide result as GitHub repository.<br />
