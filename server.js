@@ -1,16 +1,18 @@
 require("dotenv").config();
-
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 const app = express();
 
-const PORT = process.env.PORT; // port number is set in .env file (port3000)
-const API_KEY = process.env.API_KEY; // insert api key in to .env file. Its assigned to API_KEY variable in .env file.
+const PORT = process.env.PORT; // Port number is set in .env file (port 3000)
+const API_KEY = process.env.API_KEY; // Insert API key into .env file. It's assigned to API_KEY variable in .env file.
 
 const weatherStationsURL =
   "https://data.gov.lv/dati/lv/api/3/action/datastore_search?resource_id=c32c7afd-0d05-44fd-8b24-1de85b4bf11d";
 
+app.use(cors());
 app.use(express.json());
+
 // Middleware for authentication
 app.use((req, res, next) => {
   const bearerHeader = req.headers["authorization"];
