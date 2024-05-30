@@ -2,7 +2,7 @@ require("dotenv").config();
 const request = require("supertest");
 const express = require("express");
 const axios = require("axios");
-const app = require("./server");
+const { app, server } = require("./server");
 jest.mock("axios");
 
 const API_KEY = process.env.API_KEY;
@@ -10,10 +10,10 @@ const weatherStationsURL =
   "https://data.gov.lv/dati/lv/api/3/action/datastore_search?resource_id=c32c7afd-0d05-44fd-8b24-1de85b4bf11d";
 
 describe("Server Endpoints", () => {
-  // Mock authentication header
+  // Mock authentication
   const authHeader = `Bearer ${API_KEY}`;
 
-  // Mock data for the tests
+  // Mock data
   const mockStationsData = {
     result: {
       records: [
@@ -29,6 +29,10 @@ describe("Server Endpoints", () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  afterAll(() => {
+    server.close();
   });
 
   it("should return all stations", async () => {
