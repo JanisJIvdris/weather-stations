@@ -30,7 +30,6 @@ P.s. Atvainojos, par neveiksmīgo terminoloģijas tulkojumu uz latviešu valodu.
 
 
 # weather-stations
-https://github.com/saleniex/homework3?tab=readme-ov-file
 
 Homework
 Create web service with REST API which provide info about wether stations in Latvia.
