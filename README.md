@@ -17,6 +17,13 @@ Neliels koda darbības pārskats:<br />
 
 Testēšanai tika izmantots Postman un https://editor.swagger.io/ priekš OpenAPI specificācijas<br />
 
+Komandas: <br />
+*npm start* - Uzsāk darbību.<br />
+*npm test* - Uzsāk testus.<br />
+
+Es apzināti repozitorijā pievienoju .env failu, bez API atslēgas, kā .env faila šablonu, lai testētājam aiztaupītu nedaudz laika, lai gan tagad atskatoties tās visticamāk ir pāris sekundes.<br />
+Es arī vēlējos parādīt kāds tas tika izveidots, lai gan apzinos ka tos nepublicē, un repositorijas nepievieno. Tas ir pievienots .gitignore failā un pie nākamajam izmaiņām netiks publicēts.
+
 P.s. Atvainojos, par neveiksmīgo terminoloģijas tulkojumu uz latviešu valodu.<br />
 ========================================================
 
