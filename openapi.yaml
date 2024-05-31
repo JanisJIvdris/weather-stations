@@ -21,15 +21,63 @@ components:
         Enter your API key:
 
   schemas:
-    Station:
+    StationSummary:
       type: object
       properties:
+        Station_id:
+          type: string
+          description: The ID of the station
+        Name:
+          type: string
+          description: The name of the station
+
+    StationDetails:
+      type: object
+      properties:
+        _id:
+          type: integer
+          description: Internal database ID
         STATION_ID:
           type: string
           description: The ID of the station
         NAME:
           type: string
           description: The name of the station
+        WMO_ID:
+          type: integer
+          description: World Meteorological Organization ID
+        BEGIN_DATE:
+          type: string
+          format: date-time
+          description: The start date of the station data
+        END_DATE:
+          type: string
+          format: date-time
+          description: The end date of the station data
+        LATITUDE:
+          type: number
+          description: The latitude of the station
+        LONGITUDE:
+          type: number
+          description: The longitude of the station
+        GAUSS1:
+          type: string
+          description: Gauss-Krüger coordinate 1
+        GAUSS2:
+          type: string
+          description: Gauss-Krüger coordinate 2
+        GEOGR1:
+          type: number
+          description: Geographical coordinate 1
+        GEOGR2:
+          type: number
+          description: Geographical coordinate 2
+        ELEVATION:
+          type: number
+          description: Elevation of the station
+        ELEVATION_PRESSURE:
+          type: number
+          description: Elevation pressure of the station
 
 security:
   - ApiKeyAuth: []
@@ -51,7 +99,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Station"
+                  $ref: "#/components/schemas/StationSummary"
         "500":
           description: Internal server error
 
@@ -76,7 +124,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Station"
+                $ref: "#/components/schemas/StationDetails"
         "404":
           description: Station not found
         "500":
